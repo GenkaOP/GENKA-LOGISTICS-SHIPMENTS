@@ -214,7 +214,12 @@
         <h2>Contacto</h2>
         <form>
             <label for="nombre">Nombre:</label>
-           
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+            <button type="submit">Enviar</button>
         </form>
     </section>
     <footer>
@@ -224,12 +229,22 @@
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            // Aquí puedes agregar la lógica para verificar el usuario y contraseña
-            // Por ahora, simplemente mostraremos el contenido
-            document.querySelectorAll('section').forEach(section => {
-                section.style.display = 'block';
-            });
-            document.querySelector('.login-form').style.display = 'none';
+            const usuario = document.getElementById('usuario').value;
+            const contrasena = document.getElementById('contrasena').value;
+
+            // Credenciales predefinidas
+            const usuarioCorrecto = 'admin';
+            const contrasenaCorrecta = '1234';
+
+            if (usuario === usuarioCorrecto && contrasena === contrasenaCorrecta) {
+                // Mostrar contenido si las credenciales son correctas
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'block';
+                });
+                document.querySelector('.login-form').style.display = 'none';
+            } else {
+                alert('Usuario o contraseña incorrectos.');
+            }
         });
     </script>
 </body>
