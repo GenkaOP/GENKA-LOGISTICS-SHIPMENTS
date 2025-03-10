@@ -121,6 +121,30 @@
             margin-right: 0.5em;
             color: #008000;
         }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2em;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .login-form button {
+            background-color: #008000;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #006400;
+        }
     </style>
 </head>
 <body>
@@ -129,12 +153,23 @@
         <p>Rastreo de Embarques Maritimos y Terrestres</p>
     </header>
     <nav>
-        
         <a href="#testimonios">Testimonios</a>
         <a href="#seguimiento">Seguimiento</a>
         <a href="#contacto">Contacto</a>
     </nav>
-    <section id="testimonios" class="testimonials">
+
+    <section class="login-form">
+        <h2>Acceso</h2>
+        <form id="loginForm">
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" required>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </section>
+
+    <section id="testimonios" class="testimonials" style="display: none;">
         <h2>Testimonios</h2>
         <div class="testimonial">
             <p>"Excelente servicio y puntualidad. Muy recomendable."</p>
@@ -149,7 +184,7 @@
             <p>- Carlos Rodríguez</p>
         </div>
     </section>
-    <section id="seguimiento" class="tracking">
+    <section id="seguimiento" class="tracking" style="display: none;">
         <h2>Seguimiento de Embarques</h2>
         <div class="tracking-item">
             <img src="https://via.placeholder.com/300x200?text=Embarque+1" alt="Embarque 1">
@@ -175,20 +210,27 @@
         </div>
         <!-- Repite para los demás embarques -->
     </section>
-    <section id="contacto">
+    <section id="contacto" style="display: none;">
         <h2>Contacto</h2>
         <form>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-            <button type="submit">Enviar</button>
+           
         </form>
     </section>
     <footer>
         <p>&copy; 2023 GENKA LOGISTICS. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Aquí puedes agregar la lógica para verificar el usuario y contraseña
+            // Por ahora, simplemente mostraremos el contenido
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'block';
+            });
+            document.querySelector('.login-form').style.display = 'none';
+        });
+    </script>
 </body>
 </html>
