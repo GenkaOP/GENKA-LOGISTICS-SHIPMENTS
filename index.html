@@ -233,10 +233,15 @@
             const contrasena = document.getElementById('contrasena').value;
 
             // Credenciales predefinidas
-            const usuarioCorrecto = 'admin';
-            const contrasenaCorrecta = '1234';
+            const usuarios = [
+                { usuario: 'MIAH', contrasena: 'YESSPEED1' },
+                { usuario: 'JAMES', contrasena: 'TRMN1' },
+                { usuario: 'ZENITH', contrasena: 'ZNT1' }
+            ];
 
-            if (usuario === usuarioCorrecto && contrasena === contrasenaCorrecta) {
+            const usuarioValido = usuarios.find(u => u.usuario === usuario && u.contrasena === contrasena);
+
+            if (usuarioValido) {
                 // Mostrar contenido si las credenciales son correctas
                 document.querySelectorAll('section').forEach(section => {
                     section.style.display = 'block';
